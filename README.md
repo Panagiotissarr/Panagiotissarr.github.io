@@ -1,2 +1,2 @@
 ## My Website
-Credit to (sameerasw)[https://www.sameerasw.com/]
+Credit to [https://www.sameerasw.com/](sameerasw)
