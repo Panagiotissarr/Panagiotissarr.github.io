@@ -3,47 +3,83 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Photopea Embed with Ads Removed</title>
+  <title>Photopea Embed with Hide Ads Link</title>
   <style>
-    html, body, iframe {
-      margin: 0; padding: 0; height: 100%; width: 100%; border: none;
+    html, body {
+      margin: 0; padding: 0; height: 100%;
       background-color: #111;
+      display: flex; flex-direction: column; align-items: center;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+    #photopea-iframe {
+      flex-grow: 1;
+      width: 100%;
+      border: none;
+      min-height: 600px;
+    }
+    #hide-ads-container {
+      margin: 12px 0;
+      font-size: 1.1em;
+      user-select: none;
+      cursor: pointer;
+    }
+    a.extension-link {
+      color: #48a9f8;
+      text-decoration: underline;
+      margin-left: 6px;
     }
   </style>
 </head>
 <body>
-  <iframe
+
+  <iframe 
     id="photopea-iframe"
-    src="https://www.photopea.com"
+    src="https://www.photopea.com" 
     allow="fullscreen"
   ></iframe>
 
+  <label id="hide-ads-container">
+    <input type="checkbox" id="hide-ads-checkbox" />
+    Hide Ads
+  </label>
+
   <script>
-    // JavaScript to inject ad removal code into the iframe using postMessage
-    const iframe = document.getElementById('photopea-iframe');
+    function getBrowser() {
+      let userAgent = navigator.userAgent;
 
-    iframe.onload = () => {
-      // The script to run inside Photopea iframe to remove ads
-      const codeToRemoveAds = `
-        document.querySelector("body > div.flexrow.app > div:nth-child(2)").remove();
-        document.querySelector("body > div.flexrow.app > div").style.width = "100%";
-        document.querySelector("body > div.flexrow.app > div > div.flexrow > div.panelblock.mainblock").style.width = "100%";
-        const style = document.createElement("style");
-        style.type = "text/css";
-        style.innerHTML = ".fixme { min-width: fit-content; overflow: unset; }";
-        document.querySelector("body > div.flexrow.app > div:nth-child(1) > div.flexrow").appendChild(style);
-        document.querySelector("body > div.flexrow.app > div:nth-child(1) > div.flexrow > div.sbar.toolbar").className += " fixme";
-      `;
+      if (userAgent.includes("Firefox")) {
+        return "Firefox";
+      } else if (userAgent.includes("Chrome") && !userAgent.includes("Edg") && !userAgent.includes("OPR")) {
+        return "Chrome";
+      } else {
+        return "Other";
+      }
+    }
 
-      // Send postMessage to Photopea iframe with the code to execute
-      iframe.contentWindow.postMessage({ type: "runCode", code: codeToRemoveAds }, "*");
-    };
+    const hideAdsCheckbox = document.getElementById("hide-ads-checkbox");
 
-    // Optional: Listen for messages from Photopea iframe if needed
-    window.addEventListener("message", (event) => {
-      // You can handle messages from Photopea here if needed
-      console.log("Message from Photopea iframe:", event.data);
+    hideAdsCheckbox.addEventListener("change", () => {
+      if (hideAdsCheckbox.checked) {
+        const browser = getBrowser();
+
+        if (browser === "Firefox") {
+          const url = "https://addons.mozilla.org/en-US/firefox/addon/remove-ads-from-photopea/";
+          window.open(url, "_blank");
+          alert("You are running Firefox. Opening the recommended extension to hide ads.");
+        } else if (browser === "Chrome") {
+          const url = "https://chrome.google.com/webstore/detail/remove-ads-from-photopea/gjkjjhgjcalgefcimahpbacihndicccn";
+          window.open(url, "_blank");
+          alert("You are running Chrome. Opening the recommended extension to hide ads.");
+        } else {
+          alert("Sorry, your browser is not detected as Firefox or Chrome. Please visit the extension sites manually.");
+        }
+
+        // Uncheck checkbox after action
+        hideAdsCheckbox.checked = false;
+      }
     });
   </script>
+
 </body>
 </html>
