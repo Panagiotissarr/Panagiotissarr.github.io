@@ -1,32 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Photopea Embed</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Photopea Embed with Ads Removed</title>
   <style>
-    /* Remove margins and make iframe fill the page */
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
+    html, body, iframe {
+      margin: 0; padding: 0; height: 100%; width: 100%; border: none;
       background-color: #111;
-    }
-    iframe {
-      border: none;
-      width: 100%;
-      height: 100%;
-      display: block;
     }
   </style>
 </head>
 <body>
-
-  <iframe 
+  <iframe
     id="photopea-iframe"
     src="https://www.photopea.com"
-    allow="fullscreen">
-  </iframe>
+    allow="fullscreen"
+  ></iframe>
 
+  <script>
+    // JavaScript to inject ad removal code into the iframe using postMessage
+    const iframe = document.getElementById('photopea-iframe');
+
+    iframe.onload = () => {
+      // The script to run inside Photopea iframe to remove ads
+      const codeToRemoveAds = `
+        document.querySelector("body > div.flexrow.app > div:nth-child(2)").remove();
+        document.querySelector("body > div.flexrow.app > div").style.width = "100%";
+        document.querySelector("body > div.flexrow.app > div > div.flexrow > div.panelblock.mainblock").style.width = "100%";
+        const style = document.createElement("style");
+        style.type = "text/css";
+        style.innerHTML = ".fixme { min-width: fit-content; overflow: unset; }";
+        document.querySelector("body > div.flexrow.app > div:nth-child(1) > div.flexrow").appendChild(style);
+        document.querySelector("body > div.flexrow.app > div:nth-child(1) > div.flexrow > div.sbar.toolbar").className += " fixme";
+      `;
+
+      // Send postMessage to Photopea iframe with the code to execute
+      iframe.contentWindow.postMessage({ type: "runCode", code: codeToRemoveAds }, "*");
+    };
+
+    // Optional: Listen for messages from Photopea iframe if needed
+    window.addEventListener("message", (event) => {
+      // You can handle messages from Photopea here if needed
+      console.log("Message from Photopea iframe:", event.data);
+    });
+  </script>
 </body>
 </html>
