@@ -3,90 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Photopea Embed with Hide Ads Button</title>
+  <title>Photopea Fullscreen Embed</title>
   <style>
+    /* Reset margin and padding */
     html, body {
-      margin: 0; padding: 0; height: 100%;
-      background-color: #111;
-      display: flex;
-      flex-direction: column;
-      font-family: Arial, sans-serif;
-      color: white;
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
       overflow: hidden;
-      height: 100vh;
+      background-color: #111; /* optional */
     }
-    #container {
-      position: relative;
-      flex-grow: 1;
-      display: flex;
-      width: 100%;
-      height: 100%;
-    }
-    iframe#photopea-iframe {
+
+    /* Make iframe fill the whole viewport */
+    iframe {
+      display: block; /* remove inline space */
       border: none;
-      width: 100%;
-      height: 100%;
-    }
-    #hide-ads-btn {
-      position: absolute;
-      right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 60px;
-      height: 60px;
-      cursor: pointer;
-      background-image: url('https://lh3.googleusercontent.com/BqMwM6-4V8d2n-K38Mx5W39hBKC7dDfXdKGwGj60_97haAUB0gi6jr7gVDpqzx7mpBaUpTIOHSYmeUEKlMHaOG20=s60');
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      transition: background-image 0.3s ease;
-      z-index: 10;
-    }
-    #hide-ads-btn:hover {
-      /* On hover, you could use the same image or another if you want to change it */
-      background-image: url('https://lh3.googleusercontent.com/BqMwM6-4V8d2n-K38Mx5W39hBKC7dDfXdKGwGj60_97haAUB0gi6jr7gVDpqzx7mpBaUpTIOHSYmeUEKlMHaOG20=s60');
-      filter: brightness(1.2);
+      width: 100vw;
+      height: 100vh;
     }
   </style>
 </head>
 <body>
-
-  <div id="container">
-    <iframe
-      id="photopea-iframe"
-      src="https://www.photopea.com"
-      allow="fullscreen"
-      title="Photopea Online Editor"
-    ></iframe>
-    <div id="hide-ads-btn" title="Hide Ads - Click to open extension page"></div>
-  </div>
-
-  <script>
-    const hideAdsBtn = document.getElementById('hide-ads-btn');
-
-    function getBrowser() {
-      const userAgent = navigator.userAgent;
-      if (userAgent.includes('Firefox')) {
-        return 'Firefox';
-      } else if (userAgent.includes('Chrome') && !userAgent.includes('Edg') && !userAgent.includes('OPR')) {
-        return 'Chrome';
-      } else {
-        return 'Other';
-      }
-    }
-
-    hideAdsBtn.addEventListener('click', () => {
-      const browser = getBrowser();
-
-      if (browser === 'Firefox') {
-        window.open('https://addons.mozilla.org/en-US/firefox/addon/remove-ads-from-photopea/', '_blank');
-      } else if (browser === 'Chrome') {
-        window.open('https://chrome.google.com/webstore/detail/remove-ads-from-photopea/gjkjjhgjcalgefcimahpbacihndicccn', '_blank');
-      } else {
-        alert('Your browser is not detected as Firefox or Chrome. Please visit the extension sites manually.');
-      }
-    });
-  </script>
-
+  <iframe
+    src="https://www.photopea.com"
+    allow="fullscreen"
+    title="Photopea Online Editor"
+  ></iframe>
 </body>
 </html>
