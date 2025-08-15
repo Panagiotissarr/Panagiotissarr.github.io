@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Photopea Embed - Hide Ads Button Over Toolbar</title>
+  <title>Photopea Embed - Hide Ads Box Over About Button</title>
   <style>
     html, body {
       margin: 0; padding: 0;
@@ -30,29 +30,80 @@
       border: none;
       display: block;
     }
-    #hide-ads-btn {
+    /* Box container overlapping the About button */
+    #hide-ads-box {
       position: absolute;
-      top: -10px;       /* Negative top to overlap toolbar area */
-      left: 1160px;     /* Horizontal position as before */
-      width: 48px;
-      height: 48px;
-      background: white;
-      border-radius: 50%;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.22);
+      top: -6px;  /* Adjust vertical position to overlay About button */
+      left: 1090px; /* Adjust horizontal position near About button */
+      background: #282c34;
+      border-radius: 8px;
+      padding: 8px 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      cursor: pointer;
       display: flex;
       align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: box-shadow 0.2s, background 0.2s;
+      gap: 10px;
       user-select: none;
-      z-index: 10;
+      z-index: 20;
+      transition: background 0.2s ease;
+      border: 1px solid #444;
     }
-    #hide-ads-btn:hover {
-      background: #f0f0f0;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.32);
+    #hide-ads-box:hover {
+      background: #3a3f4b;
+      border-color: #6677ff;
     }
     #hide-ads-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
       object-fit: cover;
+      pointer-events: none;
+      background: white;
+      box-shadow: 0 1px 5px rgba(0,0,0,0.15);
+    }
+    #hide-ads-text {
+      color: #ccc;
+      font-weight: 600;
+      font-size: 1rem;
+      white-space: nowrap;
+      user-select: none;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="iframe-container">
+    <iframe
+      id="photopea-iframe"
+      src="https://www.photopea.com"
+      allow="fullscreen"
+      title="Photopea Online Editor"
+    ></iframe>
+    <div id="hide-ads-box" title="Hide Ads">
+      <img id="hide-ads-icon"
+          src="https://lh3.googleusercontent.com/BqMwM6-4V8d2n-K38Mx5W39hBKC7dDfXdKGwGj60_97haAUB0gi6jr7gVDpqzx7mpBaUpTIOHSYmeUEKlMHaOG20=s60"
+          alt="Hide Ads"
+      />
+      <span id="hide-ads-text">Hide Ads</span>
+    </div>
+  </div>
+<script>
+  function getBrowser() {
+    const userAgent = navigator.userAgent;
+    if (userAgent.includes('Firefox')) return 'Firefox';
+    else if (userAgent.includes('Chrome') && !userAgent.includes('Edg') && !userAgent.includes('OPR')) return 'Chrome';
+    else return 'Other';
+  }
+  document.getElementById('hide-ads-box').addEventListener('click', () => {
+    const browser = getBrowser();
+    if (browser === 'Firefox') {
+      window.open('https://addons.mozilla.org/en-US/firefox/addon/remove-ads-from-photopea/', '_blank');
+    } else if (browser === 'Chrome') {
+      window.open('https://chrome.google.com/webstore/detail/remove-ads-from-photopea/gjkjjhgjcalgefcimahpbacihndicccn', '_blank');
+    } else {
+      alert('Your browser is not detected as Firefox or Chrome. Please visit the extension sites manually.');
+    }
+  });
+</script>
+</body>
+</html>
