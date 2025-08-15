@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Photopea Embed - Hide Ads Button Over About Bar</title>
+  <title>Photopea Embed - Hide Ads Button Positioned in Toolbar Area</title>
   <style>
     html, body {
       margin: 0; padding: 0;
@@ -12,11 +12,17 @@
       overflow: hidden;
       background: #181818;
       font-family: system-ui, Arial, sans-serif;
+      display: flex;
+      justify-content: center; /* Center the container horizontally */
+      align-items: stretch;
     }
     #iframe-container {
       position: relative;
+      width: 1440px; /* Fixed width container */
       height: 100vh;
-      width: 100vw;
+      box-sizing: border-box;
+      border: 1px solid #222; /* optional, for visual debugging */
+      background: black;
     }
     #photopea-iframe {
       width: 100%;
@@ -26,8 +32,8 @@
     }
     #hide-ads-btn {
       position: absolute;
-      top: 50px; /* Example vertical offset to match about bar */
-      right: 20px;
+      top: 50px; /* Vertical position near toolbar */
+      left: 1160px; /* Exact horizontal position per your note */
       width: 48px;
       height: 48px;
       background: white;
@@ -63,9 +69,11 @@
       title="Photopea Online Editor"
     ></iframe>
     <div id="hide-ads-btn" title="Hide Ads">
-      <img id="hide-ads-icon"
+      <img
+        id="hide-ads-icon"
         src="https://lh3.googleusercontent.com/BqMwM6-4V8d2n-K38Mx5W39hBKC7dDfXdKGwGj60_97haAUB0gi6jr7gVDpqzx7mpBaUpTIOHSYmeUEKlMHaOG20=s60"
-        alt="Hide Ads">
+        alt="Hide Ads"
+      />
     </div>
   </div>
   <script>
