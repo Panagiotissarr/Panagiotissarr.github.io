@@ -3,27 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Photopea Embed - Hide Ads Button Over Top Bar</title>
+  <title>Photopea Embed - Hide Ads Button Over About Bar</title>
   <style>
     html, body {
       margin: 0; padding: 0;
-      height: 100%; width: 100vw;
+      height: 100%;
+      width: 100vw;
       overflow: hidden;
       background: #181818;
       font-family: system-ui, Arial, sans-serif;
     }
-    #photopea-iframe {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100vw;
+    #iframe-container {
+      position: relative;
       height: 100vh;
+      width: 100vw;
+    }
+    #photopea-iframe {
+      width: 100%;
+      height: 100%;
       border: none;
-      z-index: 1;
+      display: block;
     }
     #hide-ads-btn {
-      position: fixed;
-      top: 8px;
-      right: 12px;
+      position: absolute;
+      top: 50px; /* Example vertical offset to match about bar */
+      right: 20px;
       width: 48px;
       height: 48px;
       background: white;
@@ -34,8 +38,8 @@
       justify-content: center;
       cursor: pointer;
       transition: box-shadow 0.2s, background 0.2s;
-      z-index: 9999; /* VERY high so it overlaps */
       user-select: none;
+      z-index: 10;
     }
     #hide-ads-btn:hover {
       background: #f0f0f0;
@@ -51,16 +55,18 @@
   </style>
 </head>
 <body>
-  <iframe
-    id="photopea-iframe"
-    src="https://www.photopea.com"
-    allow="fullscreen"
-    title="Photopea Online Editor"
-  ></iframe>
-  <div id="hide-ads-btn" title="Hide Ads">
-    <img id="hide-ads-icon"
-      src="https://lh3.googleusercontent.com/BqMwM6-4V8d2n-K38Mx5W39hBKC7dDfXdKGwGj60_97haAUB0gi6jr7gVDpqzx7mpBaUpTIOHSYmeUEKlMHaOG20=s60"
-      alt="Hide Ads">
+  <div id="iframe-container">
+    <iframe
+      id="photopea-iframe"
+      src="https://www.photopea.com"
+      allow="fullscreen"
+      title="Photopea Online Editor"
+    ></iframe>
+    <div id="hide-ads-btn" title="Hide Ads">
+      <img id="hide-ads-icon"
+        src="https://lh3.googleusercontent.com/BqMwM6-4V8d2n-K38Mx5W39hBKC7dDfXdKGwGj60_97haAUB0gi6jr7gVDpqzx7mpBaUpTIOHSYmeUEKlMHaOG20=s60"
+        alt="Hide Ads">
+    </div>
   </div>
   <script>
     function getBrowser() {
