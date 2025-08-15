@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Photopea Embed - Smaller Hide Ads Box Shifted Left</title>
+  <title>Photopea Embed - Smaller Hide Ads Box</title>
   <style>
     html, body {
       margin: 0; padding: 0;
@@ -30,24 +30,24 @@
       border: none;
       display: block;
     }
-    /* Smaller box shifted left */
+    /* Even smaller box */
     #hide-ads-box {
       position: absolute;
-      top: -4px;          /* Slightly less vertical offset */
-      left: 1070px;       /* Shifted 20px left from before */
+      top: -3px;        /* Slight vertical adjustment */
+      left: 1070px;     /* Same horizontal position */
       background: #282c34;
       border-radius: 6px;
-      padding: 6px 10px;
+      padding: 4px 8px;
       box-shadow: 0 3px 10px rgba(0,0,0,0.4);
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       user-select: none;
       z-index: 20;
       transition: background 0.2s ease;
       border: 1px solid #444;
-      font-size: 0.85rem;
+      font-size: 0.75rem;
       font-weight: 600;
       color: #ccc;
       white-space: nowrap;
@@ -57,9 +57,9 @@
       border-color: #6677ff;
     }
     #hide-ads-icon {
-      width: 26px;         /* Smaller */
-      height: 26px;
-      border-radius: 5px;
+      width: 22px;       /* Smaller icon */
+      height: 22px;
+      border-radius: 4px;
       object-fit: cover;
       pointer-events: none;
       background: white;
@@ -77,8 +77,8 @@
     ></iframe>
     <div id="hide-ads-box" title="Hide Ads">
       <img id="hide-ads-icon"
-          src="https://lh3.googleusercontent.com/BqMwM6-4V8d2n-K38Mx5W39hBKC7dDfXdKGwGj60_97haAUB0gi6jr7gVDpqzx7mpBaUpTIOHSYmeUEKlMHaOG20=s60"
-          alt="Hide Ads"
+           src="https://lh3.googleusercontent.com/BqMwM6-4V8d2n-K38Mx5W39hBKC7dDfXdKGwGj60_97haAUB0gi6jr7gVDpqzx7mpBaUpTIOHSYmeUEKlMHaOG20=s60"
+           alt="Hide Ads"
       />
       <span>Hide Ads</span>
     </div>
