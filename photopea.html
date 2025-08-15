@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Photopea Embed - Hide Ads Box Over About Button</title>
+  <title>Photopea Embed - Smaller Hide Ads Box Shifted Left</title>
   <style>
     html, body {
       margin: 0; padding: 0;
@@ -30,44 +30,40 @@
       border: none;
       display: block;
     }
-    /* Box container overlapping the About button */
+    /* Smaller box shifted left */
     #hide-ads-box {
       position: absolute;
-      top: -6px;  /* Adjust vertical position to overlay About button */
-      left: 1090px; /* Adjust horizontal position near About button */
+      top: -4px;          /* Slightly less vertical offset */
+      left: 1070px;       /* Shifted 20px left from before */
       background: #282c34;
-      border-radius: 8px;
-      padding: 8px 14px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      border-radius: 6px;
+      padding: 6px 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.4);
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       user-select: none;
       z-index: 20;
       transition: background 0.2s ease;
       border: 1px solid #444;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #ccc;
+      white-space: nowrap;
     }
     #hide-ads-box:hover {
       background: #3a3f4b;
       border-color: #6677ff;
     }
     #hide-ads-icon {
-      width: 32px;
-      height: 32px;
-      border-radius: 6px;
+      width: 26px;         /* Smaller */
+      height: 26px;
+      border-radius: 5px;
       object-fit: cover;
       pointer-events: none;
       background: white;
       box-shadow: 0 1px 5px rgba(0,0,0,0.15);
-    }
-    #hide-ads-text {
-      color: #ccc;
-      font-weight: 600;
-      font-size: 1rem;
-      white-space: nowrap;
-      user-select: none;
-      pointer-events: none;
     }
   </style>
 </head>
@@ -84,7 +80,7 @@
           src="https://lh3.googleusercontent.com/BqMwM6-4V8d2n-K38Mx5W39hBKC7dDfXdKGwGj60_97haAUB0gi6jr7gVDpqzx7mpBaUpTIOHSYmeUEKlMHaOG20=s60"
           alt="Hide Ads"
       />
-      <span id="hide-ads-text">Hide Ads</span>
+      <span>Hide Ads</span>
     </div>
   </div>
 <script>
