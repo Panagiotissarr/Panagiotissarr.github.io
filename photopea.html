@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Photopea Embed - Button Visually on Toolbar</title>
+  <title>Photopea Embed - Hide Ads Button Over Toolbar</title>
   <style>
     html, body {
       margin: 0; padding: 0;
@@ -13,7 +13,7 @@
       background: #181818;
       font-family: system-ui, Arial, sans-serif;
       display: flex;
-      justify-content: center; /* center horizontally */
+      justify-content: center;
       align-items: center;
     }
     #iframe-container {
@@ -30,11 +30,10 @@
       border: none;
       display: block;
     }
-    /* The button simulating toolbar integration */
     #hide-ads-btn {
       position: absolute;
-      top: 8px;       /* adjust as needed to line up vertically */
-      left: 1150px;   /* adjust as needed to line up horizontally */
+      top: -10px;       /* Negative top to overlap toolbar area */
+      left: 1160px;     /* Horizontal position as before */
       width: 48px;
       height: 48px;
       background: white;
@@ -44,9 +43,9 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      z-index: 9999; /* top layer */
-      transition: background 0.2s, box-shadow 0.2s;
+      transition: box-shadow 0.2s, background 0.2s;
       user-select: none;
+      z-index: 10;
     }
     #hide-ads-btn:hover {
       background: #f0f0f0;
@@ -57,18 +56,3 @@
       height: 36px;
       border-radius: 50%;
       object-fit: cover;
-      pointer-events: none;
-    }
-  </style>
-</head>
-<body>
-  <div id="iframe-container">
-    <iframe
-      id="photopea-iframe"
-      src="https://www.photopea.com"
-      allow="fullscreen"
-      title="Photopea Online Editor"
-    ></iframe>
-    <div id="hide-ads-btn" title="Hide Ads">
-      <img id="hide-ads-icon"
-        src="https://lh3.googleusercontent.com/BqMwM6-4V8d2n-K38Mx5W39hBKC7dDfXdKGwGj60_97haAUB0gi6jr7gVDpqzx7mpBaUpTIO
