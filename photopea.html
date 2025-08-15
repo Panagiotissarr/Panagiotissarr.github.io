@@ -3,112 +3,92 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Photopea</title>
+  <title>Photopea Embed - Toolbar Hide Ads Button</title>
   <style>
     html, body {
       margin: 0; padding: 0;
       height: 100%; width: 100vw;
       overflow: hidden;
       background: #181818;
+      font-family: system-ui, Arial, sans-serif;
+    }
+    #toolbar {
+      width: 100vw;
+      height: 54px;
+      background: #23272e;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 0 24px 0 8px;
+      box-sizing: border-box;
+      border-bottom: 1px solid #333;
+      z-index: 102;
+      position: relative;
+    }
+    #hide-ads-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 18px 6px 10px;
+      background: #343941;
+      color: #eee;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 1em;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      transition: background 0.18s, color 0.18s;
+      outline: none;
+    }
+    #hide-ads-btn:hover {
+      background: #4763ec;
+      color: white;
+    }
+    #hide-ads-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 4px;
+      object-fit: cover;
+      background: #fff;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
     }
     #photopea-iframe {
       position: absolute;
-      top: 0; left: 0;
+      top: 54px;
+      left: 0;
       width: 100vw;
-      height: 100vh;
+      height: calc(100vh - 54px);
       border: none;
       z-index: 1;
-    }
-    #hide-ads-btn {
-      position: fixed;
-      right: 32px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 60px;
-      height: 60px;
-      background: white;
-      border-radius: 50%;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.22);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: opacity 0.4s, box-shadow 0.2s, background 0.2s;
-      z-index: 10;
-      opacity: 1;
-      pointer-events: auto;
-    }
-    #hide-ads-btn.hide {
-      opacity: 0;
-      pointer-events: none;
-    }
-    #hide-ads-btn:hover {
-      background: #f0f0f0;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.32);
-    }
-    #hide-ads-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      object-fit: cover;
-      user-select: none;
-      pointer-events: none;
     }
   </style>
 </head>
 <body>
+  <div id="toolbar">
+    <button id="hide-ads-btn" title="Hide Ads">
+      <img
+        id="hide-ads-icon"
+        src="https://lh3.googleusercontent.com/BqMwM6-4V8d2n-K38Mx5W39hBKC7dDfXdKGwGj60_97haAUB0gi6jr7gVDpqzx7mpBaUpTIOHSYmeUEKlMHaOG20=s60"
+        alt="Hide Ads"
+      >
+      Hide Ads
+    </button>
+  </div>
   <iframe
     id="photopea-iframe"
     src="https://www.photopea.com"
     allow="fullscreen"
     title="Photopea Online Editor"
   ></iframe>
-  <div id="hide-ads-btn" title="Hide Ads">
-    <img id="hide-ads-icon" src="https://lh3.googleusercontent.com/BqMwM6-4V8d2n-K38Mx5W39hBKC7dDfXdKGwGj60_97haAUB0gi6jr7gVDpqzx7mpBaUpTIOHSYmeUEKlMHaOG20=s60" alt="Hide Ads">
-  </div>
   <script>
-    const hideAdsBtn = document.getElementById('hide-ads-btn');
-    let hideTimeout = null;
-
-    function showBtn() {
-      hideAdsBtn.classList.remove('hide');
-      resetHideTimer();
-    }
-
-    function hideBtn() {
-      hideAdsBtn.classList.add('hide');
-    }
-
-    function resetHideTimer() {
-      if (hideTimeout) clearTimeout(hideTimeout);
-      // Hide after 3 seconds if not hovering
-      hideTimeout = setTimeout(() => {
-        if (!hideAdsBtn.matches(':hover')) hideBtn();
-      }, 3000);
-    }
-
-    // Show on mousemove within right 80px of window, then start new hide timer
-    document.addEventListener('mousemove', (e) => {
-      if (window.innerWidth - e.clientX <= 80) {
-        showBtn();
-      }
-    });
-
-    // Keep visible when hovering
-    hideAdsBtn.addEventListener('mouseenter', showBtn);
-    hideAdsBtn.addEventListener('mouseleave', resetHideTimer);
-
-    // Show on load, then auto-hide
-    showBtn();
-
-    // Button click: go to correct extension
     function getBrowser() {
       const userAgent = navigator.userAgent;
       if (userAgent.includes('Firefox')) return 'Firefox';
       else if (userAgent.includes('Chrome') && !userAgent.includes('Edg') && !userAgent.includes('OPR')) return 'Chrome';
       else return 'Other';
     }
-    hideAdsBtn.addEventListener('click', () => {
+    document.getElementById('hide-ads-btn').addEventListener('click', () => {
       const browser = getBrowser();
       if (browser === 'Firefox') {
         window.open('https://addons.mozilla.org/en-US/firefox/addon/remove-ads-from-photopea/', '_blank');
