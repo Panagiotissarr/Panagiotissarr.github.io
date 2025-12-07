@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const apps = [
     {
       name: "Zen Browser",
-      link: "./zen.html",
+      link: "./zen",
       description:
         "'Welcome to a calmer internet' Beautifully designed, privacy-focused, and packed with features. We care about your experience, not your data.",
       iconUrl:
