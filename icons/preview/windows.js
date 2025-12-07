@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", async function () {
     // read the two list.txt files inside the /folder-icons and /app-icons folders and get files names of each line from it
-    const folderIcons = await fetch("https://raw.githubusercontent.com/sameerasw/folder-icons/main/PNGs/list.txt").then((res) => res.text());
+    const folderIcons = await fetch("https://raw.githubusercontent.com/panagiotissarr/folder-icons/main/PNGs/list.txt").then((res) => res.text());
     const folderIconsList = folderIcons.split("\n");
     let logo = document.getElementById('logo');
 let title = document.getElementById('title');
@@ -58,7 +58,7 @@ function animate(){
     folderIconsList.forEach((icon) => {
         if (icon) {
             let img = document.createElement("img");
-            img.src = `https://raw.githubusercontent.com/sameerasw/folder-icons/main/PNGs/${icon}`;
+            img.src = `https://raw.githubusercontent.com/panagiotissarr/folder-icons/main/PNGs/${icon}`;
             img.alt = icon;
             img.title = icon;
             img.classList.add("icon");

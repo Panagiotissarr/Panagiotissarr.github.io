@@ -49,52 +49,33 @@ try {
 
   let intro_nav = document.getElementById("home-nav");
   let projects_nav = document.getElementById("projects-nav");
+  // journal_nav may not exist if the mood diary was removed
+  let journal_nav = document.getElementById("journal-nav");
   let about_nav = document.getElementById("about-nav");
   let contact_nav = document.getElementById("contact-nav");
 
   window.addEventListener("scroll", function () {
     let scroll = window.scrollY;
-    if (scroll < projects.offsetTop - 400) {
+    // Guard: ensure target sections exist before using offsetTop
+    const projectsTop = projects ? projects.offsetTop : Infinity;
+    const aboutTop = about ? about.offsetTop : Infinity;
+    const contactTop = contact ? contact.offsetTop : Infinity;
+
+    // Clear all first
+    intro_nav.classList.remove("active");
+    projects_nav.classList.remove("active");
+    journal_nav && journal_nav.classList.remove("active");
+    about_nav.classList.remove("active");
+    contact_nav.classList.remove("active");
+
+    if (scroll < projectsTop - 400) {
       intro_nav.classList.add("active");
-      projects_nav.classList.remove("active");
-      about_nav.classList.remove("active");
-      contact_nav.classList.remove("active");
-    } else if (scroll < about.offsetTop - 400) {
-      intro_nav.classList.remove("active");
+    } else if (scroll < aboutTop - 200) {
       projects_nav.classList.add("active");
-      about_nav.classList.remove("active");
-      contact_nav.classList.remove("active");
-    } else if (scroll < contact.offsetTop - 400) {
-      intro_nav.classList.remove("active");
-      projects_nav.classList.remove("active");
+    } else if (scroll < contactTop - 400) {
       about_nav.classList.add("active");
-      contact_nav.classList.remove("active");
     } else {
-      intro_nav.classList.remove("active");
-      projects_nav.classList.remove("active");
-      about_nav.classList.remove("active");
       contact_nav.classList.add("active");
-    }
-  });
-} catch (e) {
-  console.log(e);
-}
-
-try {
-  //expand more projects by letting elements show as block if it has the hidden class
-  let more_projects = document.getElementById("more-projects-button");
-
-  more_projects.addEventListener("click", function () {
-    //get all the hidden projects and display or hide with button toggle
-    let hidden_projects = document.querySelectorAll(".hidden");
-    for (let i = 0; i < hidden_projects.length; i++) {
-      if (hidden_projects[i].style.display === "block") {
-        hidden_projects[i].style.display = "none";
-        more_projects.innerHTML = "Show more";
-      } else {
-        hidden_projects[i].style.display = "block";
-        more_projects.innerHTML = "Show less";
-      }
     }
   });
 } catch (e) {

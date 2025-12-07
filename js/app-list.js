@@ -2,82 +2,42 @@ document.addEventListener("DOMContentLoaded", function () {
   const apps = [
     {
       name: "Zen Browser",
-      link: "https://zen-browser.app/",
+      link: "./zen.html",
       description:
         "'Welcome to a calmer internet' Beautifully designed, privacy-focused, and packed with features. We care about your experience, not your data.",
       iconUrl:
-        "https://parsefiles.back4app.com/JPaQcFfEEQ1ePBxbf6wvzkPMEqKYHhPYv8boI1Rc/f47c2154d3afca8f7d81d3788d089800_low_res_Zen_Browser.png",
-      imageUrl: "/assets/img/articles/macos/app-screenshots/zen.png",
-      price: "foss",
-    },
-    {
-      name: "Notion",
-      link: "https://notion.so/",
-      description:
-        "Notion is an all-in-one workspace for your notes, tasks, wikis, and databases. It is a powerful tool that can be used for personal and professional use.",
-      iconUrl:
-        "https://parsefiles.back4app.com/JPaQcFfEEQ1ePBxbf6wvzkPMEqKYHhPYv8boI1Rc/edd1187d9ca7d2ff5f126ff0f8945563_kbvNfoXHXp.png",
-      imageUrl: "/assets/img/articles/macos/app-screenshots/notion.png",
+        "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/zen-browser.png",
+      imageUrl: "/assets/img/articles//app-screenshots/zen.png",
       price: "free",
     },
     {
-      name: "WezTrem",
-      link: "https://wezterm.org/",
+      name: "ProtectedText",
+      link: "https://Protectedtext.com/",
       description:
-        "Wez is a clean terminal Without AI For Al  Platforms. ",
+        "Protected Text is a workspace for your notes. It is a Desinged so that can be used without an account just a url and password.",
       iconUrl:
-        "https://wezterm.org/favicon.svg",
-      imageUrl: "/assets/img/articles/macos/app-screenshots/warp.png",
+        "./assets/img/PT.png",
+      imageUrl: "/assets/img/articles//app-screenshots/notion.png",
       price: "free",
     },
     {
-      name: "Figma",
-      link: "https://figma.com/",
+      name: "GlazeWM",
+      link: "https://github.com/ianyh/Amethyst",
       description:
-        "A powerful Desing Tool Developed By Adobe",
+        "GlazeWM lets you easily organize windows and adjust their layout on the fly by using keyboard-driven commands..",
       iconUrl:
-        "https://northwoodsprinters.com/wp-content/uploads/2020/01/Logo-Design-1.png",
-      imageUrl: "/assets/img/articles/macos/app-screenshots/karabiner.png",
-      price: "foss",
+        "https://imgs.search.brave.com/Uy39kksISZ8Qi5JEha692LnVJGGJ8uPcOuV2YGT-d2s/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9naXRo/dWIuY29tL2Fzcm1h/Ny9HbGF6ZVdNX1dv/cmtzcGFjZXMtYXNy/bWE3L3Jhdy9tYWlu/L0ltYWdlcy9Mb2dv/LnBuZw",
+      imageUrl: "https://github.com/glzr-io/glazewm/raw/main/resources/assets/demo.webp",
+      price: "free",
     },
     {
-      name: "Mac Mouse Fix",
-      link: "https://macmousefix.com/",
-      description: "Make Your $10 Mouse Better Than an Apple Trackpad!",
-      iconUrl:
-        "https://parsefiles.back4app.com/JPaQcFfEEQ1ePBxbf6wvzkPMEqKYHhPYv8boI1Rc/dd0669d44c519797bb7548025bbceff3_BeqbQpVaSy.png",
-      imageUrl: "/assets/img/articles/macos/app-screenshots/mac-mouse-fix.png",
-      price: "paid",
-    },
-    // {
-    //   name: "YouTube Music Desktop",
-    //   link: "https://th-ch.github.io/youtube-music/",
-    //   description:
-    //     "Open source, cross-platform, unofficial YouTube Music Desktop App with built-in ad blocker, downloader and a lot mmore features being continuously added.",
-    //   iconUrl:
-    //     "https://parsefiles.back4app.com/JPaQcFfEEQ1ePBxbf6wvzkPMEqKYHhPYv8boI1Rc/fdf3365454022eab82c11a692e2dea7c_pwi9IYN1v9.png",
-    //   imageUrl: "/assets/img/articles/macos/app-screenshots/yt-music.png",
-    //   price: "foss",
-    // },
-    {
-      name: "Latest",
-      link: "https://max.codes/latest/",
+      name: "VSCode",
+      link: "https://code.visualstudio.com/",
       description:
-        "Latest is a free and open source app for macOS that checks if all your apps are up to date. Get a quick overview of which apps changed and what changed and update them right away.",
+        "You know it",
       iconUrl:
-        "https://github.com/mangerlahn/Latest/blob/main/Latest/Resources/Assets.xcassets/AppIcon.appiconset/64.png?raw=true",
-      imageUrl: "/assets/img/articles/macos/app-screenshots/latest.png",
-      price: "foss",
-    },
-    {
-      name: "Elmedia Video Player",
-      link: "https://apps.apple.com/us/app/elmedia-universal-video-player/id937759555?mt=12",
-      description:
-        "ELMEDIA is a Mac video player that offers advanced playback and streaming options. It can handle any conceivable media format. Local files can be streamed to Chromecast, AirPlay, Roku and DLNA devices.",
-      iconUrl:
-        "https://parsefiles.back4app.com/JPaQcFfEEQ1ePBxbf6wvzkPMEqKYHhPYv8boI1Rc/609cbad939b456df49fd7d8b14f511b3_8IBWfjKvFa.png",
-      imageUrl:
-        "/assets/img/articles/macos/app-screenshots/elmedia.png",
+        "https://imgs.search.brave.com/7yIshSgFWorSSY4kDlD4asCTBVzCsV_Hf8_YRhWcRKg/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy90/aHVtYi85LzlhL1Zp/c3VhbF9TdHVkaW9f/Q29kZV8xLjM1X2lj/b24uc3ZnLzI1MHB4/LVZpc3VhbF9TdHVk/aW9fQ29kZV8xLjM1/X2ljb24uc3ZnLnBu/Zw",
+      imageUrl: "https://imgs.search.brave.com/Sskzg1aGDnAcV_BUeQYunMAJiAUQfhcL27ATl4Zcn0s/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9yYXcu/Z2l0aHVidXNlcmNv/bnRlbnQuY29tL3Zz/Y29kZS1pY29ucy92/c2NvZGUtaWNvbnMv/bWFzdGVyL2ltYWdl/cy9zY3JlZW5zaG90/LmdpZg.gif",
       price: "free",
     },
     {
@@ -86,120 +46,46 @@ document.addEventListener("DOMContentLoaded", function () {
       description:
         "A collection of powerful productivity tools all within an extendable launcher. Fast, ergonomic and reliable.",
       iconUrl:
-        "https://parsefiles.back4app.com/JPaQcFfEEQ1ePBxbf6wvzkPMEqKYHhPYv8boI1Rc/ff9688e8751c364dbe41e7ec986e63ec_low_res_Raycast.png",
-      imageUrl: "/assets/img/articles/macos/app-screenshots/raycast.png",
+        "https://upload.wikimedia.org/wikipedia/en/f/f4/Raycast_App_Icon.png",
+      imageUrl: "/assets/img/articles//app-screenshots/raycast.png",
       price: "free",
-    },
-    {
-      name: "scrcpy",
-      link: "https://github.com/Genymobile/scrcpy/blob/master/doc/macos.md",
-      description:
-        "This application mirrors Android devices (video and audio) connected via USB or over TCP/IP, and allows to control the device with the keyboard and the mouse of the computer.",
-      iconUrl:
-        "https://parsefiles.back4app.com/JPaQcFfEEQ1ePBxbf6wvzkPMEqKYHhPYv8boI1Rc/b7cda5b2e776c4dde49eb3ef8ab2d35e_prk2we4Lr1.png",
-      imageUrl: "/assets/img/articles/macos/app-screenshots/scrcpy.png",
-      price: "foss",
-    },
-    // {
-    //   name: "LocalSend",
-    //   link: "https://localsend.org",
-    //   description:
-    //     "Share files to nearby devices. Free, open-source, cross-platform.",
-    //   iconUrl:
-    //     "https://static.macupdate.com/products/64323/l/phpzoeizw-logo.png?v=1684308099",
-    //   imageUrl: "/assets/img/articles/macos/app-screenshots/localsend.png",
-    //   price: "foss",
-    // },
-    {
-      name: "ProtonVPN",
-      link: "https://protonvpn.com/",
-      description: "The best VPN for speed and security. Stay safe. Play fast.",
-      iconUrl:
-        "https://parsefiles.back4app.com/JPaQcFfEEQ1ePBxbf6wvzkPMEqKYHhPYv8boI1Rc/8ef87b0fb3b73ced0ee18224baca3293_z7sHQzGa3S.png",
-      imageUrl: "/assets/img/articles/macos/app-screenshots/protonvpn.png",
-      price: "free",
-    },
-    {
-      name: "Proton Pass",
-      link: "https://protonvpn.com/",
-      description: "Proton Pass is a password manager developed by the Swiss software company Proton AG. It stores login credentials, email aliases, credit card data, passkeys, 2FA secret keys, and notes in virtual vaults.",
-      iconUrl:
-        "/assets/img/articles/macos/app-screenshots/protonpass.png",
-      imageUrl: "https://images.prismic.io/proton-me/ZpVD6B5LeNNTxKho_Frame3465630.png?auto=format%2Ccompress&fit=max",
-      price: "free",
-    },
-    {
-      name: "Ente Auth",
-      link: "https://github.com/ente-io/ente?tab=readme-ov-file#ente-auth",
-      description: "End to end encrypted open source authentication app that syncs your 2FA codes across devices on multiple platforms.",
-      iconUrl:
-        "https://parsefiles.back4app.com/JPaQcFfEEQ1ePBxbf6wvzkPMEqKYHhPYv8boI1Rc/9447d3c11138f440e3ddf42adef1cff1_low_res_Proton_Pass.png",
-      imageUrl: "/assets/img/articles/macos/app-screenshots/ente.png",
-      price: "foss",
-    },
-    {
-      name: "CleanShot X",
-      link: "https://cleanshot.com/",
-      description:
-        "CleanShot X provides over 50 features making it the ultimate screen capturing tool.",
-      iconUrl:
-        "https://www.podfeet.com/blog/wp-content/uploads/2022/04/CleanShot-X-logo.png",
-      imageUrl: "https://cleanshot.com/_nuxt/bgtool.18b35a89.jpg",
-      price: "paid",
     },
     {
       name: "Blip",
       link: "https://blip.net/",
       description:
         "Send any size file, right from your desktop via internet. A cross platform free to use app.",
-      iconUrl: "/assets/img/articles/macos/app-screenshots/blip-icon.png",
-      imageUrl: "/assets/img/articles/macos/app-screenshots/blip.png",
+      iconUrl: "https://imgs.search.brave.com/sGH2-CTeSPBPzAsIncGWzla6ZnzBr225lefr8ZXrXx4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9saDMu/Z29vZ2xldXNlcmNv/bnRlbnQuY29tLzU1/dzF4WjBacGVhRmtQ/d0IzUG1mQjcyYXZD/TnI3NGhEUXFUaU1n/QkQ2U0RCTlBwTDNW/T3lXNGxkX1NUY1oz/ZlVrYV94YjcwVXFM/a3h2dXJVSlZwTW4y/VlZheEthNWZndHk2/bEw9cnc",
+      imageUrl: "https://imgs.search.brave.com/iYzmePgerAFy2bsh7NHYTTSgxHqU2uRzAMdTjugZgNQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/cG9kZmVldC5jb20v/YmxvZy93cC1jb250/ZW50L3VwbG9hZHMv/MjAyNS8wMi9CbGlw/LXNjcmVlbnNob3Qt/b24tTWFjLXNob3dp/bmctbXktZGV2aWNl/cy1hbmQtcGVvcGxl/LUktaGF2ZS1jb25u/ZWN0ZWQtd2l0aC0x/MDQweDUyMC0xLnBu/Zw",
       price: "free",
     },
     {
-      name: "Battery Toolkit",
-      link: "https://github.com/mhaeuser/Battery-Toolkit",
+      name: "Proton VPN",
+      link: "https://protonvpn.com//",
       description:
-        "Control the platform power state of your Apple Silicon Mac.",
-      iconUrl:
-        "https://raw.githubusercontent.com/mhaeuser/Battery-Toolkit/main/Resources/AppIcon.svg",
-      imageUrl:
-        "/assets/img/articles/macos/app-screenshots/battery-toolkit.png",
-      price: "foss",
-    },
+        "A Free VPN service that protects your privacy and security online. Unlimited bandwidth, high-speed servers, and strong encryption.",
+      iconUrl: "https://imgs.search.brave.com/N6pt0pnxF_wF_gSwq4QA_yjzv2QBUpYDquw55X4Gih4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly91eHdp/bmcuY29tL3dwLWNv/bnRlbnQvdGhlbWVz/L3V4d2luZy9kb3du/bG9hZC9icmFuZHMt/YW5kLXNvY2lhbC1t/ZWRpYS9wcm90b24t/dnBuLWljb24ucG5n",
+      imageUrl: "",
+      price: "free",     },
     {
-      name: "Keka",
-      link: "https://www.keka.io/en/",
+      name: "Wino Mail",
+      link: "https://max.codes/latest/",
       description:
-        "With Keka you can compress as many files as you want in a bunch of formats. You can also encrypt them to store and share securely and with privacy.",
+        "Blazingly fast mail client with super responsive modern UI for Windows.",
       iconUrl:
-        "https://parsefiles.back4app.com/JPaQcFfEEQ1ePBxbf6wvzkPMEqKYHhPYv8boI1Rc/df314a3478afb8505106f1dede53b40e_WvS8oRjSkY.png",
-      imageUrl:
-        "https://www.keka.io/img/demo/dock/Keka-Square-dock-b2x.png",
-      price: "foss",
-    },
-    {
-      name: "Progressive Downloader",
-      link: "https://www.macpsd.net/",
-      description:
-        "A download manager to get 'em as fast as possible using the whole breadth of the Internet connection.",
-      iconUrl:
-        "https://parsefiles.back4app.com/JPaQcFfEEQ1ePBxbf6wvzkPMEqKYHhPYv8boI1Rc/e3cdb6853dfd67648c9462259f7e97ce_wzff0nFDwq.png",
-      imageUrl:
-        "/assets/img/articles/macos/app-screenshots/progressive-downloader.png",
+        "https://store-images.s-microsoft.com/image/apps.46082.13563003673252387.aa0aab37-1fc3-4cff-965d-326256200b2f.784318a4-3975-43cb-990a-3a9fea89c2ea?h=115",
+      imageUrl: "/assets/img/articles//app-screenshots/latest.png",
       price: "free",
     },
     {
-      name: "Calendr",
-      link: "https://github.com/pakerwreah/Calendr",
+      name: "ChatGPT",
+      link: "https://chat.openai.com/",
       description:
-        "Menubar calendar for macOS with upcoming events",
-      iconUrl:
-        "https://parsefiles.back4app.com/JPaQcFfEEQ1ePBxbf6wvzkPMEqKYHhPYv8boI1Rc/9af2892bf89c2db582e5e9c8b3420d5b_low_res_Calendar.png",
-      imageUrl:
-        "https://github.com/pakerwreah/Calendr/raw/master/resources/screenshot.png",
-      price: "foss",
-    },
+        "ChatGPT is an AI-powered chatbot developed by OpenAI, based on the GPT large language models. It is designed to engage in natural language conversations and provide human-like responses.",
+      iconUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/ChatGPT_logo.svg/1024px-ChatGPT_logo.svg.png",
+      imageUrl: "https://miro.medium.com/v2/resize:fit:1080/0*uF3t_tl9eT_eIeF-.jpg",
+      price: "free",
+    } 
   ];
 
   const appsListContainer = document.getElementById("apps-list");

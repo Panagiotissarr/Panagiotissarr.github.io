@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", async function () {
     // read the two list.txt files inside the /folder-icons and /app-icons folders and get files names of each line from it
-    const folderIcons = await fetch("https://raw.githubusercontent.com/sameerasw/mac-icons/main/folder-icons/list.txt").then((res) => res.text());
-    const appIcons = await fetch("https://raw.githubusercontent.com/sameerasw/mac-icons/main/app-icons/list.txt").then((res) => res.text());
+    const folderIcons = await fetch("https://raw.githubusercontent.com/panagiotissarr/mac-icons/main/folder-icons/list.txt").then((res) => res.text());
+    const appIcons = await fetch("https://raw.githubusercontent.com/panagiotissarr/mac-icons/main/app-icons/list.txt").then((res) => res.text());
     const folderIconsList = folderIcons.split("\n");
     const appIconsList = appIcons.split("\n");
     let logo = document.getElementById('logo');
@@ -66,7 +66,7 @@ function animate(){
     folderIconsList.forEach((icon) => {
         if (icon) {
             let img = document.createElement("img");
-            img.src = `https://raw.githubusercontent.com/sameerasw/mac-icons/main/folder-icons/${icon}`;
+            img.src = `https://raw.githubusercontent.com/panagiotissarr/mac-icons/main/folder-icons/${icon}`;
             img.alt = icon;
             img.title = icon;
             img.classList.add("icon");
@@ -78,7 +78,7 @@ function animate(){
     appIconsList.forEach((icon) => {
         if (icon) {
             let img = document.createElement("img");
-            img.src = `https://raw.githubusercontent.com/sameerasw/mac-icons/main/app-icons/${icon}`;
+            img.src = `https://raw.githubusercontent.com/panagiotissarr/mac-icons/main/app-icons/${icon}`;
             img.alt = icon;
             img.title = icon;
             img.classList.add("icon");
